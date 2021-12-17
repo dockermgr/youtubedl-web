@@ -77,7 +77,7 @@ REPORAW="$REPO/raw/$REPO_BRANCH"
 APPVERSION="$(__appversion "$REPORAW/version.txt")"
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # URL to container image [docker pull URL]
-HUB_URL="tzahi12345/youtubedlmaterial"
+HUB_URL="tzahi12345/youtubedl-material"
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Directory variables
 SERVER_DATA_DIR=""
@@ -180,6 +180,7 @@ else
     __sudo docker stop "$APPNAME" &>/dev/null
     __sudo docker rm -f "$APPNAME" &>/dev/null
   fi
+  printf_blue "Running docker pull $HUB_URL"
   __sudo docker run -d \
     --name="$APPNAME" \
     --hostname "$SERVER_HOST" \
