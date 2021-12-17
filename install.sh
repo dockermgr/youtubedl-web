@@ -13,7 +13,7 @@
 # @Other         :
 # @Resource      :
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-APPNAME="youtubedlmaterial"
+APPNAME="youtubedl-web"
 USER="${SUDO_USER:-${USER}}"
 HOME="${USER_HOME:-${HOME}}"
 SRC_DIR="${BASH_SOURCE%/*}"
@@ -68,11 +68,11 @@ scripts_check
 REPO_BRANCH="${GIT_REPO_BRANCH:-main}"
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Defaults
-APPNAME="youtubedlmaterial"
-APPDIR="$HOME/.local/share/srv/docker/youtubedlmaterial"
-DATADIR="$HOME/.local/share/srv/docker/youtubedlmaterial/files"
-INSTDIR="$HOME/.local/share/dockermgr/youtubedlmaterial"
-REPO="${DOCKERMGRREPO:-https://github.com/dockermgr}/youtubedlmaterial"
+APPNAME="youtubedl-web"
+APPDIR="$HOME/.local/share/srv/docker/youtubedl-web"
+DATADIR="$HOME/.local/share/srv/docker/youtubedl-web/files"
+INSTDIR="$HOME/.local/share/dockermgr/youtubedl-web"
+REPO="${DOCKERMGRREPO:-https://github.com/dockermgr}/youtubedl-web"
 REPORAW="$REPO/raw/$REPO_BRANCH"
 APPVERSION="$(__appversion "$REPORAW/version.txt")"
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -190,8 +190,11 @@ else
     -e ALLOW_CONFIG_MUTATIONS=true \
     -e ytdl_use_local_db=false \
     -e write_ytdl_config=false \
-    -v $LOCAL_DATA_DIR:/app \
     -v $LOCAL_CONFIG_DIR:/app/appdata \
+    -v $LOCAL_DATA_DIR/audio:/app/audio \
+    -v $LOCAL_DATA_DIR/video:/app/video \
+    -v $LOCAL_DATA_DIR/subscriptions:/app/subscriptions \
+    -v $LOCAL_DATA_DIR/users:/app/users \
     -p $SERVER_LISTEN:$SERVER_PORT:$SERVER_PORT_INT \
     "$HUB_URL" &>/dev/null
 fi
