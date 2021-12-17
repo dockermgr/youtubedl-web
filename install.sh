@@ -94,8 +94,8 @@ SERVER_HOST="${APPNAME}.$(hostname -d 2>/dev/null | grep '^' || echo local)"
 SERVER_TIMEZONE="${TZ:-${TIMEZONE:-America/New_York}}"
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Port Setup [ _INT is container port ]
-SERVER_PORT="${SERVER_PORT:-}"
-SERVER_PORT_INT="${SERVER_PORT_INT:-}"
+SERVER_PORT="${SERVER_PORT:-17442}"
+SERVER_PORT_INT="${SERVER_PORT_INT:-17442}"
 SERVER_PORT_ADMIN="${SERVER_PORT_ADMIN:-}"
 SERVER_PORT_ADMIN_INT="${SERVER_PORT_ADMIN_INT:-}"
 SERVER_PORT_OTHER="${SERVER_PORT_OTHER:-}"
