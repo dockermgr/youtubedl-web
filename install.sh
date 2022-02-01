@@ -103,11 +103,9 @@ SERVER_PORT_OTHER_INT="${SERVER_PORT_OTHER_INT:-}"
 SERVER_WEB_PORT="${SERVER_WEB_PORT:-$SERVER_PORT}"
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # SSL Setup
-SERVER_SSL_CA="/etc/ssl/CA/CasjaysDev/certs/ca.crt"
-SERVER_SSL_CRT="/etc/ssl/CA/CasjaysDev/certs/localhost.crt"
-SERVER_SSL_KEY="/etc/ssl/CA/CasjaysDev/private/localhost.key"
-[[ -f "$SERVER_SSL_CRT" ]] && [[ -f "$SERVER_SSL_KEY" ]] && SERVER_SSL="true"
-[[ -n "$SERVER_SSL" ]] || SERVER_SSL="${SERVER_SSL:-false}"
+SERVER_SSLDIR="${SERVER_SSLDIR:-/etc/ssl/CA/CasjaysDev}"
+SERVER_SSL_CRT="${SERVER_SSL_CRT:-$SERVER_SSLDIR/certs/localhost.crt}"
+SERVER_SSL_KEY="${SERVER_SSL_KEY:-$SERVER_SSLDIR/private/localhost.key}"
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Override global variables
 [[ -f "$HOME/.config/myscripts/dockermgr/env" ]] && . "$HOME/.config/myscripts/dockermgr/env"
