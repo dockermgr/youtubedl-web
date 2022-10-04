@@ -226,7 +226,7 @@ else
     --restart=always \
     --privileged \
     -e ALLOW_CONFIG_MUTATIONS=true \
-    -e ytdl_use_local_db=false \
+    -e ytdl_use_local_db=true \
     -e write_ytdl_config=false \
     -v $LOCAL_CONFIG_DIR:/app/appdata:z \
     -v $LOCAL_DATA_DIR/audio:/app/audio:z \
